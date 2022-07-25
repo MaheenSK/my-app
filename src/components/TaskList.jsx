@@ -1,9 +1,10 @@
 import React from 'react'
 import TaskItem from './TaskItem'
 import { useSelector } from 'react-redux'
+
 const TaskList = () => {
-  const tasks=useSelector((state)=>state.tasks);
-  console.log("Task ==>", tasks);
+  const selector=useSelector((state)=>state.tasks);
+  const { taskList } = selector;
   return (
     <>
        <div style={{display:"flex", width:"900px"}} className='mx-2'>
@@ -23,9 +24,11 @@ const TaskList = () => {
             <b>Delete</b>
            </div>
         </div>
-        {tasks.map((task)=>
-        ( <TaskItem id={task.id} title={task.title} /> )
-        )}
+        {taskList ? taskList.map((task, index) =>
+        <div key={index}>
+          <TaskItem id={task.id} title={task.title} completed={task.completed} date={task.date}/>
+        </div>
+      ) : null}
         
     </>
   )

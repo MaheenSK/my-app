@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import { editTodo,deleteTodo, onClickUpdateButton , setIdToUpdate } from '../redux/todoSlice';
+import { deleteTodo, onClickUpdateButton , setIdToUpdate } from '../redux/todoSlice';
 
 const TodoItem = ({id, title}) => {
   const dispatch=useDispatch();
@@ -19,10 +19,10 @@ const TodoItem = ({id, title}) => {
             {title}
         </div>
         <div><button className='btn m-2' style={{backgroundColor:"transparent"}} onClick={onUpdate}>
-        <img style={{ width:"20px"}} src="icons8-edit-50.png" />
+        <img style={{ width:"20px"}} src="icons8-edit-50.png" alt='Edit' />
         </button></div>
         <div><button className='btn m-2' style={{backgroundColor:"transparent"}} onClick={onDelete}>
-        <img style={{ width:"20px"}} src="icons8-delete-30.png" />
+        <img style={{ width:"20px"}} src="icons8-delete-30.png" alt='Delete'/>
         </button></div>
     </div>
     </>

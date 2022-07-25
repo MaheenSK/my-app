@@ -6,7 +6,7 @@ const todoSlice = createSlice(
         initialState: {
             onClickUpdate: false,
             idToUpdate:'',
-            todoTaskList: [],
+            todoList: [],
         },
         reducers: {
             addTodo: (state, action) => {
@@ -14,17 +14,17 @@ const todoSlice = createSlice(
                     id: new Date().getTime(),
                     title: action.payload.title
                 };
-                state.todoTaskList.push(newTodo);
+                state.todoList.push(newTodo);
             },
-            deleteTodo: (state, action) => {
-                state.todoTaskList = state.todoTaskList.filter((task) =>
-                    task.id !== action.payload.id
+            deleteTodo: (state, action) => { 
+                state.todoList = state.todoList.filter((todo) =>
+                    todo.id !== action.payload.id
                 );
             },
             editTodo: (state, action) => {
-                state.todoTaskList.map((tasks) => {
-                    if (tasks.id === action.payload.id) {
-                        tasks.title = action.payload.title;
+                state.todoList.forEach((todos) => {
+                    if (todos.id === action.payload.id) {
+                        todos.title = action.payload.title;
                     }
                 })
             },

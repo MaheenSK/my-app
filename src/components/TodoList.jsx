@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const TodoList = () => {
   const selector = useSelector((state) => state.todos);
-  const { todoTaskList } = selector;
+  const { todoList } = selector;
 
   return (
     <>
@@ -19,7 +19,7 @@ const TodoList = () => {
           <b>Delete</b>
         </div>
       </div>
-      {todoTaskList ? todoTaskList.map((todo, index) =>
+      {todoList ? todoList.map((todo, index) =>
         <div key={index}>
           <TodoItem id={todo.id} title={todo.title} />
         </div>
