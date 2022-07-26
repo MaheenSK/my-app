@@ -5,19 +5,21 @@ import { addTask, editTask, onClickUpdateButton} from '../redux/taskSlice';
 
 const TaskInput = () => {
   const [value, setValue]= useState('');
+  const [date, setDate]=useState();
   
   const dispatch=useDispatch();
   const selector = useSelector((state) => state.tasks);
   const { idToUpdate, onClickUpdate } = selector;
-  const d=new Date();
+ 
   const onAdd=(event)=>{
     event.preventDefault();
     setValue('');
     dispatch(addTask(
       {title:value, 
-      date: d.toString().substring(4, 16),
+      date: date,
     }
     ));
+   
   };
   const onEdit = (event) => {
     event.preventDefault();
@@ -40,7 +42,7 @@ const TaskInput = () => {
         
          {!onClickUpdate ? <>
           <div className="col-auto">
-        <input type="date" id="date" className="form-control shadow" 
+        <input type="date" id="date" className="form-control shadow" onChange={(event)=>setDate(event.target.value)}
         />
          </div>
          <div className="col-auto">

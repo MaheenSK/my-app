@@ -6,13 +6,16 @@ const todoSlice = createSlice(
         initialState: {
             onClickUpdate: false,
             idToUpdate:'',
+            
             todoList: [],
+           
         },
         reducers: {
             addTodo: (state, action) => {
                 const newTodo = {
                     id: new Date().getTime(),
                     title: action.payload.title
+
                 };
                 state.todoList.push(newTodo);
             },
@@ -33,6 +36,9 @@ const todoSlice = createSlice(
             },
             setIdToUpdate:(state,action)=>{
                 state.idToUpdate = action.payload
+            },
+            setIdToShow:(state,action)=>{
+                state.idToShow = action.payload
             }
         },
     },
