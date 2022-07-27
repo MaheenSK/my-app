@@ -1,5 +1,4 @@
 
-import './App.css';
 import TodoInput from './components/TodoInput';
 import TaskInput from './components/TaskInput';
 import React from 'react'

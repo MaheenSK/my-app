@@ -3,11 +3,11 @@ import TaskItem from './TaskItem'
 import { useSelector } from 'react-redux'
 
 const TaskList = () => {
-  const selector=useSelector((state)=>state.tasks);
-  const { taskList } = selector;
+  const selector=useSelector((state)=>state.todos);
+  const { todoList, taskAdded, idToShow } = selector;
   return (
-    <>
-       <div style={{display:"flex", width:"900px"}} className='mx-2'>
+    <div>
+       <div style={{display:"flex", width:"900px"}} className='mx-2 shadow'>
        <div style={{width:"190px"}} className='m-2'>
             <b>Completed</b>
         </div>
@@ -24,13 +24,19 @@ const TaskList = () => {
             <b>Delete</b>
            </div>
         </div>
-        {taskList ? taskList.map((task, index) =>
-        <div key={index}>
-          <TaskItem id={task.id} title={task.title} completed={task.completed} date={task.date}/>
-        </div>
-      ) : null}
-        
-    </>
+        {taskAdded && todoList.map((element) => {
+        return (
+          element.task.map((item, index) => {
+            return (
+              <div key={index}>
+                {element.id === idToShow ? <TaskItem id={item.id} title={item.title} completed={item.completed} date={item.date} /> : null}
+              </div>
+            )
+
+          })
+        )
+      })}
+    </div>
   )
 }
 

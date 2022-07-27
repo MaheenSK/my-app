@@ -8,7 +8,7 @@ const TodoList = () => {
 
   return (
     <>
-      <div style={{ display: "flex", width: "350px" }} className='mx-2'>
+      <div style={{ display: "flex", width: "350px"}} className='mx-2 shadow'>
         <div style={{ width: "210px" }} className='m-2'>
           <b>Name</b>
         </div>
