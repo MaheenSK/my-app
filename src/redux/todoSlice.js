@@ -20,6 +20,7 @@ const todoSlice = createSlice(
                 const newTodo = {
                     id: new Date().getTime(),
                     title: action.payload.title,
+                    onClick:false,
                     task:[],
                 };
                 state.todoList.push(newTodo);
@@ -48,7 +49,24 @@ const todoSlice = createSlice(
             },
 
             setTodoClicked: (state, action) => {
-                state.todoClicked = action.payload;
+                state.todoClicked = action.payload.clicked;
+                const index=state.todoList.findIndex((item)=>{return item.id===state.idToShow});
+                console.log("index: ",index);
+                if(index===-1){
+                    state.todoList[0].onClick=action.payload.clicked;
+                state.todoList.forEach((item)=>{
+                    if(item.id!==state.idToShow)
+                    {item.onClick=false;}
+                })
+            }
+                else{
+                    state.todoList[index].onClick=action.payload.clicked;
+                    state.todoList.forEach((item)=>{
+                        if(item.id!==state.idToShow)
+                        {item.onClick=false;}
+                    })
+                }
+                
             },
 
             onClickUpdateButton: (state, action) => {

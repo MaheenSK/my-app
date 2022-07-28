@@ -21,7 +21,7 @@ const TodoList = () => {
       </div>
       {todoList ? todoList.map((todo, index) =>
         <div key={index}>
-          <TodoItem id={todo.id} title={todo.title} />
+          <TodoItem id={todo.id} title={todo.title} clicked={todo.onClick} />
         </div>
       ) : null}
     </>

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { deleteTodo, onClickUpdateButton, setIdToUpdate, setIdToShow, setTodoClicked } from '../redux/todoSlice';
 
-const TodoItem = ({ id, title }) => {
+const TodoItem = ({ id, title, clicked }) => {
   const dispatch = useDispatch();
   const onUpdate = () => {
     dispatch(onClickUpdateButton(true));
@@ -13,9 +13,9 @@ const TodoItem = ({ id, title }) => {
   };
 
   return (
-
+   
     <>
-      <div style={{ display: "flex", width: "350px" }} className='shadow mx-2' onClick={() => { dispatch(setTodoClicked(true)); dispatch(setIdToShow(id)) }} >
+      <div style={{ display: "flex", width: "350px", backgroundColor:clicked?"rgba(207, 207, 207, 0.3)":"white" }} className='shadow mx-2' onClick={() => {  dispatch(setIdToShow(id)) ;dispatch(setTodoClicked({clicked:!clicked,}));}} >
         <div style={{ width: "200px" }} className='m-2'>
           {title}
         </div>

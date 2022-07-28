@@ -25,7 +25,7 @@ const TaskItem = ({ id, title, completed, date }) => {
 
     <>
     
-      <div style={{ display: "flex", width: "900px" }} className='shadow mx-2'>
+      <div style={{ display: "flex", width: "900px", backgroundColor:completed?"rgba(38, 161, 24, 0.3)":'white' }} className='shadow mx-2'>
         <div style={{ width: "165px" }} className='m-2'>
           <input type='checkbox' style={{ width: '95px' }} checked={completed} onChange={onCompleteClick}></input>
         </div>
